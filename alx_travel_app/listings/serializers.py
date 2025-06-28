@@ -1,4 +1,4 @@
-from .models import Listing, Booking, Review
+from .models import Listing, Booking, Review, Payment
 from rest_framework import serializers
 
 class ListingSerializer(serializers.ModelSerializer):
@@ -28,3 +28,14 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = '__all__'
         read_only_fields = ('review_id', 'created_at', 'updated_at')
+
+class PaymentSerializer(serializers.ModelSerializer):
+    booking = BookingSerializer(read_only=True)
+    booking_id = serializers.PrimaryKeyRelatedField(
+        queryset=Booking.objects.all(), source='booking', write_only=True
+    )
+
+    class Meta:
+        model = Payment
+        fields = '__all__'
+        read_only_fields = ('payment_id', 'transaction_id')

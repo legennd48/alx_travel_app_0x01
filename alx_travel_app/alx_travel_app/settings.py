@@ -153,3 +153,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ],
 }
+
+
+# Chapa Payment Gateway Settings
+CHAPA_SECRET_KEY = env('CHAPA_SECRET_KEY')
+CHAPA_PUBLIC_KEY = env('CHAPA_PUBLIC_KEY')
+CHAPA_ENCRYPTION_KEY = env('CHAPA_ENCRYPTION_KEY')
+CHAPA_API_URL = env('CHAPA_API_URL')  # Chapa API URL for initializing payments
+PAYMENT_SUCCESS_URL = env('PAYMENT_SUCCESS_URL')
+CALLBACK_URL = env('CALLBACK_URL')  # Callback URL for payment verification
